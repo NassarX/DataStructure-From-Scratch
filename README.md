@@ -1,1 +1,1 @@
-# DataStructure-From-Scratch
+# Data Structure From Scratch
