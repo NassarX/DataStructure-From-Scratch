@@ -127,3 +127,100 @@ class SinglyLinkedList:
                 break
             cur = cur.next
             index += 1
+
+    def swap_nodes(self, data_1, data_2):
+        if self.head is None:
+            return False
+
+        if data_1 == data_2:
+            return
+
+        left_node_parent = None
+        left_node = self.head
+        while left_node and left_node.data != data_1:
+            left_node_parent = left_node
+            left_node = left_node.next
+
+        right_node_parent = None
+        right_node = self.head
+        while right_node and right_node.data != data_2:
+            right_node_parent = right_node
+            right_node = right_node.next
+
+        left_node_parent.next, right_node_parent.next = right_node, left_node
+        left_node.next, right_node.next = right_node.next, left_node.next
+
+    def reverse_iterative(self):
+
+        # initialize variables
+        prev = None  # `previous` initially points to None
+        cur = self.head  # `current` points at the first element
+        next_node = cur.next  # `following` points at the second element
+
+        # go till the last element of the list
+        while cur:
+            cur.next = prev  # reverse the link
+            prev = cur  # move `previous` one step ahead
+            cur = next_node  # move `current` one step ahead
+            if next_node:  # if this was not the last element
+                next_node = next_node.next  # move `following` one step ahead
+
+        self.head = prev
+
+    def reverse_recursive(self):
+
+        def _reverse_recursive(cur, prev):
+            if not cur:
+                return prev
+
+            next_node = cur.next  # `following` points at the second element
+            cur.next = prev  # reverse the link
+            prev = cur  # move `previous` one step ahead
+            cur = next_node  # move `current` one step ahead
+            if next_node:  # if this was not the last element
+                next_node = next_node.next  # move `following` one step ahead
+            return _reverse_recursive(cur, prev)
+
+        self.head = _reverse_recursive(cur=self.head, prev=None)
+
+    def merge(self, List_2):
+        List_1 = self.head
+        List_2 = List_2.head
+        # Node for output LinkedList
+        head_ptr = temp_ptr = Node()  # head_ptr will be the head node of the output list
+        # temp_ptr will be used to insert nodes in the output list
+
+        # Loop for merging two lists
+        # Loop terminates when both lists reaches to its end
+        while List_1 or List_2:
+            # List_1 has not reached its end
+            # and List_2 has either reached its end or its current node has data
+            # greater than or equal to the data of List_1 node
+            # than insert List_1 node in the ouput list
+            if List_1 and (not List_2 or List_1.data <= List_2.data):
+                temp_ptr.next = Node(List_1.data)
+                List_1 = List_1.next
+            # otherwise insert List_2 node in the ouput list
+            else:
+                temp_ptr.next = Node(List_2.data)
+                List_2 = List_2.next
+            # move temp_pointer to next position
+            temp_ptr = temp_ptr.next
+        # return output list
+        return head_ptr.next
+
+    def remove_duplicates(self):
+        cur = self.head
+        prev = None
+        dup_values = dict()
+
+        while cur:
+            if cur.data in dup_values:
+                # Remove node:
+                prev.next = cur.next
+                cur = None
+            else:
+                # Have not encountered element before.
+                dup_values[cur.data] = 1
+                prev = cur
+            cur = prev.next
