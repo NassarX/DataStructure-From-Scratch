@@ -1,15 +1,16 @@
 """
------------------------- Singly Linked List -------------------------
+------------------------ Doubly Linked List -------------------------
 """
 
 
 class Node:
     def __init__(self, data=None):
         self.data = data
+        self.prev = None
         self.next = None
 
 
-class SinglyLinkedList:
+class DoublyLinkedList:
     def __init__(self):
         self.head = None
 
@@ -30,10 +31,11 @@ class SinglyLinkedList:
         while cur.next:
             cur = cur.next
         cur.next = new_node
+        new_node.prev = cur
 
     def prepend(self, data):
         new_node = Node(data)
-
+        self.head.prev = new_node
         new_node.next = self.head
         self.head = new_node
 
@@ -44,26 +46,31 @@ class SinglyLinkedList:
             return False
 
         new_node = Node(data)
-        while cur is not None:
+        while cur:
             if cur.data == prev_node_data:
-                new_node.next = cur.next
+                nxt = cur.next
                 cur.next = new_node
+                new_node.next = nxt
+                new_node.prev = cur
+                cur.next.prev = new_node
                 return
             cur = cur.next
 
     def insert_before_node(self, next_node_data, data):
         cur = self.head
 
-        if self.head is None:
+        if not self.head:
             return False
 
         new_node = Node(data)
         while cur:
             next_node = cur.next
             if next_node.data == next_node_data:
-                new_node.next = next_node
+                new_node.next = cur.next
+                new_node.prev = cur
                 cur.next = new_node
-                return
+                next_node.prev = new_node
+                break
             cur = cur.next
 
     def length(self):
