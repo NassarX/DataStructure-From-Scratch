@@ -96,3 +96,7 @@ class SinglyLinkedList:
             if idx == index:
                 return cur.data
             idx += 1
+
+    def is_empty(self):
+        is_empty = True if not self.head else False
+        return is_empty

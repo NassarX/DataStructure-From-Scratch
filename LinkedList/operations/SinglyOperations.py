@@ -207,7 +207,6 @@ class SinglyOperations:
         self.singly_linked_list.head = cur.next
         return
 
-
     def delete_node_by_vale(self, data):
         cur = self.singly_linked_list.head
 
