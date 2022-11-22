@@ -199,6 +199,15 @@ class SinglyOperations:
                 prev = cur
             cur = prev.next
 
+    def delete_at_head(self):
+        cur = self.singly_linked_list.head
+        if not self.singly_linked_list.head:
+            return False
+
+        self.singly_linked_list.head = cur.next
+        return
+
+
     def delete_node_by_vale(self, data):
         cur = self.singly_linked_list.head
 
