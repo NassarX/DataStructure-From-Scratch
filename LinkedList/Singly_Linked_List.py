@@ -183,27 +183,27 @@ class SinglyLinkedList:
 
         self.head = _reverse_recursive(cur=self.head, prev=None)
 
-    def merge(self, List_2):
-        List_1 = self.head
-        List_2 = List_2.head
+    def merge(self, list_2):
+        list_1 = self.head
+        list_2 = list_2.head
         # Node for output LinkedList
         head_ptr = temp_ptr = Node()  # head_ptr will be the head node of the output list
         # temp_ptr will be used to insert nodes in the output list
 
         # Loop for merging two lists
         # Loop terminates when both lists reaches to its end
-        while List_1 or List_2:
-            # List_1 has not reached its end
-            # and List_2 has either reached its end or its current node has data
-            # greater than or equal to the data of List_1 node
-            # than insert List_1 node in the ouput list
-            if List_1 and (not List_2 or List_1.data <= List_2.data):
-                temp_ptr.next = Node(List_1.data)
-                List_1 = List_1.next
-            # otherwise insert List_2 node in the ouput list
+        while list_1 or list_2:
+            # list_1 has not reached its end
+            # and list_2 has either reached its end or its current node has data
+            # greater than or equal to the data of list_1 node
+            # than insert list_1 node in the ouput list
+            if list_1 and (not list_2 or list_1.data <= list_2.data):
+                temp_ptr.next = Node(list_1.data)
+                list_1 = list_1.next
+            # otherwise insert list_2 node in the ouput list
             else:
-                temp_ptr.next = Node(List_2.data)
-                List_2 = List_2.next
+                temp_ptr.next = Node(list_2.data)
+                list_2 = list_2.next
             # move temp_pointer to next position
             temp_ptr = temp_ptr.next
         # return output list
