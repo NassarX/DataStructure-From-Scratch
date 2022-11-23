@@ -236,6 +236,8 @@ class DoublyOperations:
             cur = cur.next
 
     def pairs_with_sum(self, sum_val):
+        # Time Complexity: O(n^2)
+        # Space Complexity: O(1)
         p = self.doubly_linked_list.head
         q = p.next
 
@@ -251,4 +253,38 @@ class DoublyOperations:
                 q = q.next
             p = p.next
             q = p.next
+        return results
+
+    def pairs_with_sum2(self, sum_val):
+        # Time Complexity: O(n)
+        # Space Complexity: O(1)
+
+        # get last node
+        last_node = None
+        q = self.doubly_linked_list.head
+        while q:
+            last_node = q
+            q = q.next
+
+        start = self.doubly_linked_list.head
+        end = last_node
+        length = self.doubly_linked_list.length()
+
+        i_start = 0
+        j_end = length
+        results = []
+        while i_start < j_end and start and end:
+            if start.data + end.data == sum_val:
+                s = (start.data, end.data)
+                results.append(s)
+                j_end -= 1
+                end = end.prev
+                i_start += 1
+                start = start.next
+            elif start.data + end.data > 5:
+                j_end -= 1
+                end = end.prev
+            else:
+                i_start += 1
+                start = start.next
         return results
