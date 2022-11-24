@@ -1,10 +1,10 @@
-from BinaryTrees.binary_tree import Node
-from BinaryTrees.binary_tree import BinaryTree
+from BinaryTrees.binary_search_tree import Node
+from BinaryTrees.binary_search_tree import BinarySearchTree
 
 
-class BinaryTreeApplications(object):
+class BinarySearchTreeApplications(object):
     def __init__(self, root: Node()):
-        self.tree = BinaryTree(root)
+        self.bst_tree = BinarySearchTree(root)
 
     def tree_includes_recursive(self, root, target):
         if not root:
@@ -63,3 +63,19 @@ class BinaryTreeApplications(object):
             return 0
 
         return 1 + self.tree_size(root.left) + self.tree_size(root.right)
+
+    def is_bst_satisfied(self, root):
+        if not root:
+            return False
+
+        if root.left:
+            if root.val <= root.left.val:
+                return False
+        if root.right:
+            if root.val >= root.right.val:
+                return False
+
+        self.is_bst_satisfied(root.left)
+        self.is_bst_satisfied(root.right)
+
+        return True

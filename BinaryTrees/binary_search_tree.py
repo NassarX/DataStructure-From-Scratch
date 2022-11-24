@@ -5,7 +5,7 @@ class Node:
         self.right = None
 
 
-class BinaryTree(object):
+class BinarySearchTree(object):
     def __init__(self, root):
         self.root = root
 
@@ -94,3 +94,19 @@ class BinaryTree(object):
                 tmp_queue.append(current_node.right)
 
         return False
+
+    def insert_helper(self, root, node):
+        if node.val > root.val:
+            if root.right:
+                self.insert_helper(root.right, node)
+            else:
+                root.right = node
+        else:
+            if root.left:
+                self.insert_helper(root.left, node)
+            else:
+                root.left = node
+
+    def insert(self, node: Node()):
+        self.insert_helper(self.root, node)
+
