@@ -2,7 +2,7 @@ from LinkedList.singly_linked_list import SinglyLinkedList
 from LinkedList.singly_linked_list import Node
 
 
-class SinglyOperations:
+class SinglyApplications:
     def __init__(self):
         self.singly_linked_list = SinglyLinkedList()
 

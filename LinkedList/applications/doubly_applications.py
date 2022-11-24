@@ -3,7 +3,7 @@ from LinkedList.doubly_linked_list import DoublyLinkedList
 from LinkedList.singly_linked_list import Node as SinglyNode
 
 
-class DoublyOperations:
+class DoublyApplications:
     def __init__(self):
         self.doubly_linked_list = DoublyLinkedList()
 
