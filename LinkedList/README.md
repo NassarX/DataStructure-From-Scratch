@@ -5,6 +5,7 @@
 
 - Data
 - Next
+- Prev (Doubly)
 > The **data** component allows a node in the linked list to store an element of data that can be of type string, character, number, or any other type of object.
 
 > The **next** component in every node is a **pointer** that points from one node to another.
@@ -27,14 +28,20 @@
 2. Prepend
    - The prepend method will insert an element at the beginning of the linked list.
 
-3. Insert After Node Prepend 
+3. Insert After Node
    - Inserting an element after a given node.
 
 4. Insert Before Node
    - Inserting an element before a given node.
 
-5. Deletion by Value
-   - Delete the node by its value and update the rest of the pointers.
+5. Deletion at head
+   - Delete the first node and update the rest of the pointers.
 
 6. Deletion by Position
    - Delete the node by its index and update the rest of the pointers.
+
+7. Search
+   - Returns the given element from a linked list
+
+8. isEmpty
+   - Returns true if the linked list is empty

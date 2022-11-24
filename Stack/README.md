@@ -5,7 +5,7 @@ the most recently added element that was not yet removed.
 
  * see <a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack (Wikipedia)</a>
 
-### Stack Operations
+### Stack Basic Operations
 
 ### Push 
 
@@ -19,3 +19,23 @@ the most recently added element that was not yet removed.
 ### Peek 
 > Another thing that we can do is view the top element of the stack, so we can ask the data structure: “What’s the top element?” and it can give that to us using the peek operation. Note that the peek operation does not remove the top element, it merely returns it.
 
+##Time Complexities:
+- Push: O(1)
+- Pop: O(1)
+- Peek: O(1)
+- isEmpty: O(1)
+- Size: O(1)
+
+###Limitations:
+  - Stack size is to be defined first and cannot be changed.
+  - Trying to push a new element into a full stack causes an implementation-specific exception.
+
+##Applications of Stack:
+- Balancing of symbols
+- Infix-to-postfix conversion
+- Evaluation of postfix expression
+- Implementing function calls (including recursion)
+- Page-visited history in a Web browser [Back Buttons]
+- Undo sequence in a text editor
+- Matching Tags in HTML and XML
+- Used in many algorithms like Tower of Hanoi, tree traversals, stock span problem, histogram problem.

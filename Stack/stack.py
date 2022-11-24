@@ -82,4 +82,15 @@ class Stack:
             return False
 
     def display(self):
+        """ Returns stack contents
+
+        :return:
+        """
         return self.items
+
+    def __str__(self):
+        """ For printing the stack contents
+
+        :return:
+        """
+        return ' '.join([str(i) for i in self.items])
