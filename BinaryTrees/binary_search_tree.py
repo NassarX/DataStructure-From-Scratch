@@ -75,7 +75,7 @@ class BinarySearchTree(object):
         left_values = self.depth_first_values_recursive(root.left)
         right_values = self.depth_first_values_recursive(root.right)
 
-        return [root] + left_values + right_values
+        return left_values + [root.val] + right_values
 
     @staticmethod
     def tree_includes(root, target) -> bool:
@@ -110,3 +110,15 @@ class BinarySearchTree(object):
     def insert(self, node: Node()):
         self.insert_helper(self.root, node)
 
+
+# Set up tree:
+a = Node(1)
+tree = BinarySearchTree(a)
+tree.root.left = Node(2)
+tree.root.right = Node(3)
+tree.root.left.left = Node(4)
+tree.root.left.right = Node(5)
+tree.root.right.left = Node(6)
+tree.root.right.right = Node(7)
+
+print(tree.depth_first_values_recursive(a))
